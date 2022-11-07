@@ -1,0 +1,58 @@
+.dropdown {
+    margin-left: 30rem;
+    margin-right: 30rem;
+    margin-top: 2rem;
+    align-content: center;
+}
+
+.button {
+    margin-left: 20rem;
+    margin-top: 1rem;
+    border: 1px solid ;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.button:hover {
+    background-color: #555555;
+    color: white;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.column {
+    float: left;
+    width: 33%;
+    padding: 20px;
+}
+
+.row {margin: 50px;}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 1360px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
