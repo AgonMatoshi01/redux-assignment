@@ -10,11 +10,11 @@ const selectUser = (user) => async dispatch => {
 const deleteUser = (user) => async dispatch => {
     dispatch({type: 'DELETE_USER', payload: user})
 }
-const acsendingOrder = (users) => async dispatch=>{
-    dispatch({type: 'ASCENDING_ORDER' , payload: users})
+const acsendingOrder = () => async dispatch=>{
+    dispatch({type: 'ASCENDING_ORDER'})
 }
-const distendingOrder = (users) => async dispatch=>{
-    dispatch({type: 'DISTENDING_ORDER' , payload: users})
+const distendingOrder = () => async dispatch=>{
+    dispatch({type: 'DISTENDING_ORDER'  })
 }
 
 const allActions = {
