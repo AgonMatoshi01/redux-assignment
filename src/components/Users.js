@@ -34,16 +34,18 @@ const Users = () => {
 
     }
     const selected = selectedUser?.map(user => {
+            const {id, name, email, address:{city}, address:{street}, phone, company, website} = user;
+            console.log(selectedUser)
             return (
-                <div key={user?.id} className="column">
+                <div key={id} className="column">
                     <div className="card">
                         <button className='button' onClick={() => openModal(user)}>X</button>
-                        <h3>{user?.name}</h3>
-                        <p><b>Email:</b> {user?.email}</p>
-                        <p><b>Address:</b>{user?.address.city},{user?.address.street}</p>
-                        <p><b>Phone:</b> {user?.phone}</p>
-                        <p><b>Company:</b> {user?.company.name}</p>
-                        <a href={user?.website}>{user?.website}</a>
+                        <h3>{name}</h3>
+                        <p><b>Email:</b> {email}</p>
+                        <p><b>Address:</b>{city},{street}</p>
+                        <p><b>Phone:</b> {phone}</p>
+                        <p><b>Company:</b> {company.name}</p>
+                        <a href={website}>{website}</a>
                     </div>
                 </div>
             )
@@ -51,16 +53,16 @@ const Users = () => {
     )
     return (
         <>
-        <div>
+            <div>
 
-            <Select
-                className='dropdown'
-                options={data}
-                onChange={(e) => {
-                    dispatch(allActions.selectUser(e));
-                    sortingType === "asc" ? acsendingHandle() : distendingHandle()
-                }}
-            />
+                <Select
+                    className='dropdown'
+                    options={data}
+                    onChange={(e) => {
+                        dispatch(allActions.selectUser(e));
+                        sortingType === "asc" ? acsendingHandle() : distendingHandle()
+                    }}
+                />
                 <div className='buttons'>
                     <input type="radio" value="Acsending" name="sort" onClick={acsendingHandle}
                            defaultChecked/> Acsending
@@ -70,7 +72,7 @@ const Users = () => {
                     {selected}
                     {modal && <Modal user={toBeDeletedUser} modalVisible={setModal}/>}
                 </div>
-        </div>
+            </div>
         </>
     );
 }
