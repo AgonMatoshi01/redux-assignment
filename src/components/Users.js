@@ -16,10 +16,9 @@ const Users = () => {
     useEffect(() => {
         dispatch(allActions.fetchUsers());
     }, [dispatch]);
-    console.log(users)
+    // console.log(users)
     // console.log(selectedUser)
-    const data = users?.map(user => ({...user, label: user.name, value: user.id})
-    )
+    const data = users?.map(user => ({...user, label: user.name, value: user.id}))
     const acsendingHandle = () => {
         setSortingType("asc")
         dispatch(allActions.acsendingOrder(selectedUser))
@@ -34,8 +33,9 @@ const Users = () => {
 
     }
     const selected = selectedUser?.map(user => {
-            const {id, name, email, address:{city}, address:{street}, phone, company, website} = user;
-            console.log(selectedUser)
+        // console.log(user)
+            const {id, name, email, address:{city, street}, company:{name:companyName}, phone, website, } = user;
+            // console.log(city)
             return (
                 <div key={id} className="column">
                     <div className="card">
@@ -44,7 +44,7 @@ const Users = () => {
                         <p><b>Email:</b> {email}</p>
                         <p><b>Address:</b>{city},{street}</p>
                         <p><b>Phone:</b> {phone}</p>
-                        <p><b>Company:</b> {company.name}</p>
+                        <p><b>Company:</b> {companyName}</p>
                         <a href={website}>{website}</a>
                     </div>
                 </div>

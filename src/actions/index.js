@@ -14,7 +14,7 @@ const acsendingOrder = () => async dispatch=>{
     dispatch({type: 'ASCENDING_ORDER'})
 }
 const distendingOrder = () => async dispatch=>{
-    dispatch({type: 'DISTENDING_ORDER'  })
+    dispatch({type: 'DISTENDING_ORDER'})
 }
 
 const allActions = {
