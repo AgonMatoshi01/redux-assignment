@@ -16,9 +16,7 @@ const Users = () => {
     useEffect(() => {
         dispatch(allActions.fetchUsers());
     }, [dispatch]);
-    // console.log(users)
-    // console.log(selectedUser)
-    const data = users?.map(user => ({...user, label: user.name, value: user.id}))
+
     const acsendingHandle = () => {
         setSortingType("asc")
         dispatch(allActions.acsendingOrder(selectedUser))
@@ -33,16 +31,16 @@ const Users = () => {
 
     }
     const selected = selectedUser?.map(user => {
-        // console.log(user)
-            const {id, name, email, address:{city, street}, company:{name:companyName}, phone, website, } = user;
-            // console.log(city)
+            // console.log(user)
+            const {id, name, email, address: {city, street}, company: {name: companyName}, phone, website,} = user;
+            // console.log(companyName)
             return (
                 <div key={id} className="column">
                     <div className="card">
                         <button className='button' onClick={() => openModal(user)}>X</button>
                         <h3>{name}</h3>
                         <p><b>Email:</b> {email}</p>
-                        <p><b>Address:</b>{city},{street}</p>
+                        <p><b>Address:</b>{city} ,{street}</p>
                         <p><b>Phone:</b> {phone}</p>
                         <p><b>Company:</b> {companyName}</p>
                         <a href={website}>{website}</a>
@@ -57,10 +55,10 @@ const Users = () => {
 
                 <Select
                     className='dropdown'
-                    options={data}
+                    options={users.map(user => ({...user, label: user.name, value: user.id}))}
                     onChange={(e) => {
                         dispatch(allActions.selectUser(e));
-                        sortingType === "asc" ? acsendingHandle() : distendingHandle()
+                        sortingType === 'asc' ? acsendingHandle() : distendingHandle();
                     }}
                 />
                 <div className='buttons'>
